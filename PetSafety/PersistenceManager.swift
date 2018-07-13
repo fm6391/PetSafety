@@ -11,6 +11,7 @@ import CoreData
 
 class PersistenceManager {
     static let name = "PPet"
+    static let nameUser = "PUser"
     static func getContext() -> NSManagedObjectContext {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
@@ -38,6 +39,18 @@ class PersistenceManager {
             print("Errore in fetch \(error.code)")
         }
         return pets
+    }
+    
+    static func fetchDataUser () -> [PUser]{
+        var user = [PUser] ()
+        let context = getContext()
+        let fetchRequest = NSFetchRequest<PUser>(entityName: nameUser)
+        do {
+            try user = context.fetch(fetchRequest)
+        } catch let error as NSError{
+            print("Errore in fetch \(error.code)")
+        }
+        return user
     }
     
     static func saveContext() {

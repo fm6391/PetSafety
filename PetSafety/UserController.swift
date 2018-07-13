@@ -12,12 +12,11 @@ import ViewRow
 import ImageRow
 
 class UserController: FormViewController {
-
-
+    var pUser : PUser!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         form +++ Section()
             <<< ViewRow<UIImageView>("user")
                 
