@@ -58,11 +58,11 @@ class ViewController: FormViewController {
                     type.tag = "Type"
                     type.selectorTitle = "Peek an pet"
                     type.options = ["Dog","Cat","Rabbit"]
-//                    if(pet.type == nil) {
-//                        type.value = "Dog"    // initially selected
-//                    } else {
-//                        type.value = pPet.type
-//                    }
+                   if(pPet.type == nil) {
+                       type.value = "Dog"    // initially selected
+                   } else {
+                       type.value = pPet.type
+                   }
                 }
                 <<< TextRow(){ race in
                     race.title = "Race"
@@ -73,19 +73,19 @@ class ViewController: FormViewController {
                 <<< DateRow(){ date in
                     date.title = "Date of birth"
                     date.tag = "Date of birth"
-//                    date.value = pPet.birthDate
+                    date.value = pPet.birthdate! as Date
                 }
                 <<< TextRow(){ microchip in
                     microchip.title = "Microchip ID"
                     microchip.tag = "Microchip ID"
                     microchip.placeholder = "Insert pet's microchip ID"
-//                    microchip.value = pPet.microchipID
+                    microchip.value = pPet.microchipid
                     }
                 <<< TextRow(){ beacon in
                     beacon.title = "Beacon ID"
                     beacon.tag = "Beacon ID"
                     beacon.placeholder = "Insert pet's beacon ID"
-//                    beacon.value = pPet.beaconUUID
+                    beacon.value = pPet.beaconid
                 }
         
                 
@@ -121,15 +121,15 @@ class ViewController: FormViewController {
         
         let rowBirthDate: DateRow? = form.rowBy(tag: "Date of birth")
         let valueBirthDate = rowBirthDate?.value
-//        pPet.birthDate = valueBirthDate ?? Date()
+        pPet.birthdate = valueBirthDate! as NSDate
         
         let rowMicrochipID: TextRow? = form.rowBy(tag: "Microchip ID")
         let valueMicrochipID = rowMicrochipID?.value
-//        pPet.microchipID = valueMicrochipID ?? ""
+        pPet.microchipid = valueMicrochipID ?? ""
         
         let rowBeaconID: TextRow? = form.rowBy(tag: "Beacon ID")
         let valueBeaconID = rowBeaconID?.value
-//        pPet.beaconUUID = valueBeaconID ?? ""
+        pPet.beaconid = valueBeaconID ?? ""
         
         PersistenceManager.saveContext()
     }

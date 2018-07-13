@@ -134,14 +134,11 @@ class PetsController: UITableViewController {
         
         case "newPet"?:
             
-//            petList.addEmptyPet()
+
             let newPet = PersistenceManager.newEmptyPet()
+            
             petPList.append(newPet)
-//            let currentItem = petList.petArray[petList.petArray.count-1]
-            
-//            let dstView = segue.destination as! ViewController
-            
-//            dstView.pet = currentItem
+
             let currentPet = petPList[petPList.count-1]
             
             let dstView = segue.destination as! ViewController

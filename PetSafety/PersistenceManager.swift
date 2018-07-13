@@ -21,7 +21,7 @@ class PersistenceManager {
         let pPet = NSEntityDescription.insertNewObject(forEntityName: name, into: context) as! PPet
         
         pPet.name = "new name"
-        pPet.birthdate = Date() as NSDate?
+        pPet.birthdate = NSDate()
         pPet.race = "razza"
         pPet.order = 1
         
